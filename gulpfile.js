@@ -1,6 +1,6 @@
 const elixir = require('laravel-elixir');
 
-require('laravel-elixir-vue-2');
+// require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,7 +13,10 @@ require('laravel-elixir-vue-2');
  |
  */
 
+elixir.config.sourcemaps = false;
+elixir.config.production = true;
 elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+    mix.sass('material.scss', 'public/css/material.css')
+        .webpack('libs.js', 'public/js/libs.js')
+        .copy('./node_modules/materialize-css/fonts', 'public/fonts');
 });
